@@ -14,10 +14,10 @@ server.listen(5)
 while True:
     #comSocket is for
     comSocket, addr = server.accept()
-    print(f"connected to {addr}")
+    print(f"CONNECTION ESTABLISHED WITH: {addr}")
 
     message = comSocket.recv(1024).decode('utf-8')
-    print(f"message from {addr}: {message}")
+    print(f"CLIENT {addr}: {message}")
 
     comSocket.send(f"SERVER: recieved message".encode('utf-8'))
 
