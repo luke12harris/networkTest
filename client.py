@@ -10,3 +10,5 @@ socket.connect((HOST, PORT))
 socket.send('hello from the client'.encode('utf-8'))
 
 print(socket.recv(1024).decode('utf-8'))
+
+input()
