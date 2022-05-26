@@ -16,8 +16,6 @@ while True:
     comSocket, addr = server.accept()
     print(f"CONNECTION ESTABLISHED WITH: {addr}")
 
-    comSocket.send(f"CONNECTION ESTABLISHED".endode('utf-8'))
-
     message = comSocket.recv(1024).decode('utf-8')
     print(f"CLIENT {addr}: {message}")
 
