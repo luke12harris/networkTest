@@ -7,6 +7,8 @@ socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 socket.connect((HOST, PORT))
 
+print(socket.recv(1024).decode('utf-8'))
+
 socket.send('hello from the client'.encode('utf-8'))
 
 print(socket.recv(1024).decode('utf-8'))
