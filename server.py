@@ -23,4 +23,4 @@ while True:
 
     comSocket.close()
 
-    print("SERVER: connection ended")
+    print(f"SERVER: connection with {addr}ended")
