@@ -27,7 +27,13 @@ def main():
     #this socket is for listening / accepting  new connecitons
     serverSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    serverSock.bind((HOST, PORT))
+    #binding server
+    try:
+        serverSock.bind((HOST, PORT))
+    except socket.error as error:
+        print(str(error))
+
+
     print('server binded')
 
     serverSock.listen(5)

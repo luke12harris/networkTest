@@ -6,7 +6,12 @@ def main():
 
     clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    clientSocket.connect((HOST, PORT))
+
+    try:
+        clientSocket.connect((HOST, PORT))
+
+    except socket.error as error:
+        print(str(error))
 
     while True:
         message = input("Enter message to send: ")
