@@ -21,7 +21,7 @@ def threaded (comSock):
 
 
 def main():
-    HOST = '192.168.0.7'
+    HOST = '192.168.0.9'
     PORT = 9090
 
     #this socket is for listening / accepting  new connecitons
