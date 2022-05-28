@@ -39,7 +39,7 @@ def main():
 
         printLock.acquire()
 
-        print(f"connection with {addr[0]} and {addr[1]}")
+        print(f"connection with {addr[0]}:{addr[1]}")
 
         _thread.start_new_thread(threaded, (comSock,))
 

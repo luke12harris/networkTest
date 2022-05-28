@@ -10,6 +10,7 @@ def main():
 
     while True:
         message = input("Enter message to send: ")
+
         clientSocket.send(message.encode('utf-8'))
 
         data = clientSocket.recv(1024)
@@ -17,7 +18,7 @@ def main():
         print(f"Server recieved: {str(data.decode('utf-8'))} ")
 
         reply = input("Reply? 0/1")
-        if reply == 0:
+        if reply == "0":
             break
     clientSocket.close
 
