@@ -1,12 +1,12 @@
 import socket
-from thread import *
+from _thread import *
 import threading
 
 printLock = threading.Lock()
 
 
 def threaded (comSock):
-    self comSock = comSock
+
     while True:
         data = comSock.recv(1024)
         if not data:
@@ -15,7 +15,7 @@ def threaded (comSock):
             break
 
         data = data[::1] #reverse the incoming data
-        
+
         comSock.send(data)
         comSock.close()
 
