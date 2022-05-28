@@ -41,9 +41,10 @@ def main():
 
         print(f"connection with {addr[0]} and {addr[1]}")
 
-        serverSock.close()
-
         _thread.start_new_thread(threaded, (comSock,))
 
+    serverSock.close()
+
+        
 if __name__ == "__main__":
     main()
