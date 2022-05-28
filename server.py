@@ -17,7 +17,7 @@ def threaded (comSock):
         data = data[::1] #reverse the incoming data
 
         comSock.send(data)
-        comSock.close()
+    comSock.close()
 
 
 def main():
@@ -45,6 +45,6 @@ def main():
 
     serverSock.close()
 
-        
+
 if __name__ == "__main__":
     main()
