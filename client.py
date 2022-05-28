@@ -1,7 +1,7 @@
 import socket
 
 def main();
-    HOST = '192.168.0.7'
+    HOST = '192.168.0.9'
     PORT = 9090
 
     socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
