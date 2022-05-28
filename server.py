@@ -1,5 +1,5 @@
 import socket
-from _thread import *
+import _thread
 import threading
 
 printLock = threading.Lock()
@@ -43,7 +43,7 @@ def main():
 
         serverSock.close()
 
-        start_new_thead(threaded, (comSock,))
+        _thread.start_new_thread(threaded, (comSock,))
 
 if __name__ == "__main__":
     main()
