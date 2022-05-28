@@ -1,26 +1,49 @@
 import socket
+from thread import *
+import threading
 
-HOST = '192.168.0.7'
-PORT = 9090
+printLock = threading.Lock()
 
-#this socket is for listening / accepting  new connecitons
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-server.bind((HOST, PORT))
-print('server binded')
+def threaded (comSock):
+    self comSock = comSock
+    while True:
+        data = comSock.recv(1024)
+        if not data:
+            print("not cool")
+            printLock.release()
+            break
 
-server.listen(5)
+        data = data[::1] #reverse the incoming data
+        
+        comSock.send(data)
+        comSock.close()
 
-while True:
-    #comSocket is for
-    comSocket, addr = server.accept()
-    print(f"CONNECTION ESTABLISHED WITH: {addr}")
 
-    message = comSocket.recv(1024).decode('utf-8')
-    print(f"CLIENT {addr}: {message}")
+def main():
+    HOST = '192.168.0.7'
+    PORT = 9090
 
-    comSocket.send(f"SERVER: recieved message".encode('utf-8'))
+    #this socket is for listening / accepting  new connecitons
+    serverSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    comSocket.close()
+    serverSock.bind((HOST, PORT))
+    print('server binded')
 
-    print(f"SERVER: connection with {addr}ended")
+    serverSock.listen(5)
+    print("server is listening")
+
+    while True:
+        #comSock is a communication socket
+        comSock, addr = serverSock.accept()
+
+        printLock.acquire()
+
+        print(f"connection with {addr[0]} and {addr[1]}")
+
+        serverSock.close()
+
+        start_new_thead(threaded, (comSock,))
+
+if __name__ == "__main__":
+    main()
