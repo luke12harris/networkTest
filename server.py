@@ -23,7 +23,7 @@ def threadedClient (comSock):
 def main():
     HOST = '192.168.0.9'
     PORT = 9090
-    theadCount = 0
+    threadCount = 0
 
     #this socket is for listening / accepting  new connecitons
     serverSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
