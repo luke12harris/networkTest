@@ -5,8 +5,8 @@ import threading
 printLock = threading.Lock()
 
 
-def threaded (comSock):
-
+def threadedClient (comSock):
+    comSock.send(str.encode("WELCOME"))
     while True:
         data = comSock.recv(1024)
         if not data:
@@ -16,13 +16,14 @@ def threaded (comSock):
 
         data = data[::1] #reverse the incoming data
 
-        comSock.send(data)
+        comSock.sendall(f"Server Says: {data}")
     comSock.close()
 
 
 def main():
     HOST = '192.168.0.9'
     PORT = 9090
+    theadCount = 0
 
     #this socket is for listening / accepting  new connecitons
     serverSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -47,7 +48,11 @@ def main():
 
         print(f"connection with {addr[0]}:{addr[1]}")
 
-        _thread.start_new_thread(threaded, (comSock,))
+        _thread.start_new_thread(threadedClient, (comSock,))
+
+        threadCount +=1
+
+        print(f"Thread Number : {threadCount}")
 
     serverSock.close()
 
